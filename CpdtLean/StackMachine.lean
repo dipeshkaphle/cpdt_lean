@@ -53,7 +53,8 @@ def compile (e : Exp) : Prog :=
   | Exp.const n => (Instr.iConst n)::[]
   | Exp.binop b e1 e2 => compile e2 ++ compile e1 ++ (Instr.iBinop b ::[])
 
-@[simp] theorem nonEmptyProgramIfCompiled (e: Exp) : List.length (compile e) >= 1 :=  by
+-- Don't know why I added this proof but a good exercise
+theorem nonEmptyProgramIfCompiled (e: Exp) : List.length (compile e) >= 1 :=  by
   induction e with
   | const a =>
     unfold compile
